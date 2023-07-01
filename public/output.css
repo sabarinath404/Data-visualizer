@@ -1471,3 +1471,16 @@ html{
 .center {
   align-items: center;
 }
+.custom-table {
+  background-color: #f4f4f4;
+  padding-bottom: 20px;
+}
+
+.relative.overflow-x-auto {
+  max-height: 300px; /* Set a specific height to enable scrolling */
+  overflow-y: scroll;
+}
+
+.bg-g{
+  background-color: rgb(107, 112, 125);
+}

@@ -18,7 +18,7 @@
 
 
   ```
-  <html class="h-full bg-gray-100">
+  <html class="h-full bg-gray-100"> ̰
   <body class="h-full">
   ```
 -->
@@ -99,7 +99,7 @@
 </button>
 </div>
 </div>
-</div>
+
   
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu">
@@ -375,6 +375,81 @@
         </div>
       </div>
 
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto;">
+        <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
+      
+      <div class=" text-white py-2 px-3 rounded-t-lg">
+        <thead class="text-xs uppercase">
+          <tr>
+            <th scope="col" class="px-3 py-2">
+              _id
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Biology
+            </th>
+            <th scope="col" class="px-3 py-2">
+              English
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Hindi
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Math
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Attendance
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Science
+            </th>
+            <th scope="col" class="px-3 py-2">
+              Social
+            </th>
+          </tr>
+        </thead>
+      </div>
+      </table>
+      </div>
+      
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto;">
+        <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
+          <tbody>
+            <% data.forEach(item => { %>
+            <tr class="bg-blue-500 border-b border-blue-400">
+              <td class="px-3 py-2 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                <%= item._id %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.Biology %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.English %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.Hindi %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.Math %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.attendance %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.science %>
+              </td>
+              <td class="px-3 py-2">
+                <%= item.social %>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      
+      
+      
+      
+
    
 
        </div>
@@ -404,17 +479,18 @@
 
 
       
-      <div class="mx-auto max-w-7xl  sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
+      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
         <canvas id="barchart" height="400"></canvas>
       </div>
+      
       <script>
         // Get the attendance data from the server-side
         const attendanceData = JSON.parse('<%- JSON.stringify(attendanceData) %>');
-      
+        
         // Extract the _id and attendance values from the data
         const labels = attendanceData.map(item => item._id);
         const values = attendanceData.map(item => item.attendance);
-      
+        
         // Prepare the data for the bar chart
         const data = {
           labels: labels,
@@ -426,13 +502,13 @@
             borderWidth: 1
           }]
         };
-      
+        
         // Get the canvas element
-        const canvas = document.getElementById('barchart');
-        const ctx = canvas.getContext('2d');
-      
+        const barChartCanvas = document.getElementById('barchart');
+        const barChartCtx = barChartCanvas.getContext('2d');
+        
         // Create the bar chart
-        barChart = new Chart(ctx, {
+        barChart = new Chart(barChartCtx, {
           type: 'bar',
           data: data,
           options: {
@@ -466,26 +542,88 @@
         });
       </script>
       
+      </div> <!-- Closing div for the previous section -->
       
-
-
-  
-       </div>
-       <div class="chart2">
-  
-           <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
-             <div class="flex justify-between items-center">
-              <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance summary</h1>
-          
-                 </div>
-                   </div>
-
-                   
-
+      <div class="chart2">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+          <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance summary</h1>
+          </div>
+        </div>
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
+          <canvas id="polarAreaChart" height="400"></canvas>
+        </div>
+        <!-- <div class="chart-container" style="margin: 10px;">
+          <canvas id=""></canvas>
+        </div> -->
       
+        <script>
+const resultArray = [0, 0, 0, 0, 0, 0];
+
+values.forEach(value => {
+  if (value >= 95 && value <= 1000) {
+    resultArray[0]++;
+  } else if (value >= 90 && value < 95) {
+    resultArray[1]++;
+  } else if (value >= 85 && value < 90) {
+    resultArray[2]++;
+  } else if (value >= 80 && value < 85) {
+    resultArray[3]++;
+  } else if (value >= 75 && value < 80) {
+    resultArray[4]++;
+  } else {
+    resultArray[5]++;
+  }
+});
+
+console.log(resultArray);
+        // const values = attendanceData.map(item => item.attendance);
+        //  labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
+        // data:resultArray,
+       
+        
+          const polarData = {
+            labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
+            datasets: [
+              {
+                label: 'My Dataset',
+                data:resultArray,
+                backgroundColor: [
+                  'rgba(255, 99, 132, 0.6)',
+                  'rgba(54, 162, 235, 0.6)',
+                  'rgba(255, 206, 86, 0.6)',
+                  'rgba(75, 192, 192, 0.6)',
+                  'rgba(153, 102, 255, 0.6)',
+                  'rgba(0, 0, 0, 0.6)'
+
+                ],
+                borderWidth: 1
+              }
+            ]
+          };
       
-     
-    </div>
+          const polarOptions = {
+  responsive: true,
+  plugins: {
+    title: {
+      display: true,
+      text: 'Polar Area Chart Example'
+    }
+  },
+  layout: {
+    padding: 10 // Add padding value here
+  }
+};
+      
+          const polarChartCtx = document.getElementById('polarAreaChart').getContext('2d');
+          const polarAreaChart = new Chart(polarChartCtx, {
+            type: 'polarArea',
+            data: polarData,
+            options: polarOptions
+          });
+        </script>
+      </div>
+      </div>
 
    </div>
 
