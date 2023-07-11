@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="output.css">
-   
 
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="output.css">
+
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2257/2257295.png">
+
+  <title>Data Visualizer</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
   <script src="/js/acquisitions.js" defer></script>
-<script src="/js/dropdown.js"></script>
-    <script src="/config/database.js"></script>
+  <script src="/js/dropdown.js"></script>
+  <script src="/config/database.js"></script>
 </head>
+
 <body><!--
   This example requires updating your template:
 
@@ -22,613 +25,700 @@
   <body class="h-full">
   ```
 -->
-<div class="min-h-full">
-  <nav class="bg-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center">
-          <div class="flex-shrink-0">
+  <div class="min-h-full">
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
 
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-clipboard-data-fill" viewBox="0 0 20 20">
-                <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
-                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white"
+                class="bi bi-clipboard-data-fill" viewBox="0 0 20 20">
+                <path
+                  d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z" />
+                <path
+                  d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z" />
               </svg>
 
 
+
+
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
            
-        
-        </div>
+                <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  aria-current="page">Dashboard</a>
+                <a href="/enter-data"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enter
+                  data</a>
+                <a href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
+                <a href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
+                <a href="#"
+                  class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Reports</a>
+              </div>
+            </div>
+          </div>
           <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-              <a href="/enter-data" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Enter data</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
-              <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Reports</a>
+            <div class="ml-4 flex items-center md:ml-6">
+              <button type="button"
+                class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span class="sr-only">View notifications</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-bell-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+                </svg>
+              </button>
+
+              <!-- Profile dropdown -->
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <button type="button"
+                    class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="h-8 w-8 rounded-full"
+                      src="https://www.acquisition.com/hubfs/ACQ_Web_Bio-AlexHormozi%202.png"
+                      alt="">
+                  </button>
+                </div>
+
+                <!-- Dropdown menu -->
+                <div
+                  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none invisible hidden"
+                  role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                  id="user-menu">
+                  <!-- Active: "bg-gray-100", Not Active: "" -->
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                    id="user-menu-item-0">Your Profile</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                    id="user-menu-item-1">Settings</a>
+                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                    id="user-menu-item-2">Sign out</a>
+                </div>
+              </div>
+
+
+
+
             </div>
           </div>
         </div>
-        <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
-            <button type="button" class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-              <span class="sr-only">View notifications</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-                <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
-              </svg>
-            </button>
-
-            <!-- Profile dropdown -->
-<!-- Profile dropdown -->
-<div class="relative ml-3">
-    <div>
-      <button type="button" class="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-        <span class="sr-only">Open user menu</span>
-        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-      </button>
-    </div>
-  
-    <!-- Dropdown menu -->
-    <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none invisible hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" id="user-menu">
-      <!-- Active: "bg-gray-100", Not Active: "" -->
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-    </div>
-  </div>
-  
-  
-
-
-</div>
-</div>
-</div>
-<div class="-mr-2 flex md:hidden">
-<!-- Mobile menu button -->
-<button type="button" class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" aria-controls="mobile-menu" aria-expanded="false">
-  <span class="sr-only">Open main menu</span>
-  <!-- Menu open: "hidden", Menu closed: "block" -->
-  <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-  </svg>
-  <!-- Menu open: "block", Menu closed: "hidden" -->
-  <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-  </svg>
-</button>
-</div>
-</div>
-
-  
-    <!-- Mobile menu, show/hide based on menu state. -->
-    <div class="md:hidden" id="mobile-menu">
-      <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">enter data</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
-        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Reports</a>
-      </div>
-      <div class="border-t border-gray-700 pb-3 pt-4">
-        <div class="flex items-center px-5">
-          <div class="flex-shrink-0">
-            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-          </div>
-          <div class="ml-3">
-            <div class="text-base font-medium leading-none text-white">Tom Cook</div>
-            <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
-          </div>
-          <button type="button" class="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-            <span class="sr-only">View notifications</span>
-            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+        <div class="-mr-2 flex md:hidden">
+          <!-- Mobile menu button -->
+          <button type="button"
+            class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <!-- Menu open: "hidden", Menu closed: "block" -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!-- Menu open: "block", Menu closed: "hidden" -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
-        <div class="mt-3 space-y-1 px-2">
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your Profile</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign out</a>
-        </div>
       </div>
-    </div>
-  </nav>
-
-  <header class="bg-white shadow">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-    </div>
-  </header>
-  <main>
-    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-      
-      <!-- Your content -->
-      <div class="main-div">
-      <div class="chart2">
 
 
-
-       
-
-     
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
-          <div class="flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Mark percentage</h1>
-            <div class="dropdown">
-              <button class="dropdown-btn" >Math</button>
-              <ul class="dropdown-menu">
-                <li><a href="#" onclick="selectOption('English')">English</a></li>
-                <li><a href="#" onclick="selectOption('Social')">Social</a></li>
-                <li><a href="#" onclick="selectOption('science')">science</a></li>
-                <li><a href="#" onclick="selectOption('Biology')">Biology</a></li>
-                <li><a href="#" onclick="selectOption('Hindi')">Hindi</a></li>
-              </ul>
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page">Dashboard</a>
+          <a href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">enter
+            data</a>
+          <a href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+          <a href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+          <a href="#"
+            class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Reports</a>
+        </div>
+        <div class="border-t border-gray-700 pb-3 pt-4">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <img class="h-10 w-10 rounded-full"
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt="">
             </div>
+            <div class="ml-3">
+              <div class="text-base font-medium leading-none text-white">Tom Cook</div>
+              <div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
+            </div>
+            <button type="button"
+              class="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-3 space-y-1 px-2">
+            <a href="#"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
+              Profile</a>
+            <a href="#"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Settings</a>
+            <a href="#"
+              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Sign
+              out</a>
           </div>
         </div>
-       
-      
-  
-
-         <!-- <script>
-          const colors = [
-            'rgba(255, 206, 86, 0.8)',
-            'rgba(255, 150, 94, 0.8)',
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(0, 128, 0, 0.8)',
-            
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(255, 159, 64, 0.8)',
-            'rgba(54, 162, 235, 0.8)'
-          ];
-        
-          let currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-          
-          function selectOption(option) {
-            console.log(option);
-            const dropdownBtn = document.querySelector('.dropdown-btn');
-            dropdownBtn.textContent = option;
-        
-            switch (option) {
-              case 'Hindi':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Hindi) %>');
-                break;
-              case 'Biology':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Biology) %>');
-                break;
-              case 'English':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.English) %>');
-                break;
-              case 'Math':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-                break;
-              case 'science':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.science) %>');
-                break;
-              case 'social':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.social) %>');
-                break;
-              default:
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-                break;
-            }
-        
-            console.log(currentArray);
-        
-            // Update the chart with the selected array
-            chart.data.datasets[0].data = currentArray;
-            chart.update();
-          }
-        
-          document.addEventListener('DOMContentLoaded', () => {
-            const subject = 'Hindi';
-        
-            const ctx = document.getElementById('poi').getContext('2d');
-            const chart = new Chart(ctx, {
-              type: 'pie',
-              data: {
-                labels: ['A+', 'A', 'B+', 'B', 'C+', 'C', 'D+', 'f'],
-                datasets: [
-                  {
-                    label: subject,
-                    data: currentArray,
-                    backgroundColor: colors.slice(0, currentArray.length),
-                    // borderColor: 'rgba(75, 192, 192, 1)',
-                  }
-                ]
-              },
-              options: {
-                layout: {
-                  padding: 20
-                }
-              }
-            });
-        
-            // Assign the chart to the global variable after its initialization
-            window.chart = chart;
-          });
-        </script> -->
-
-        <script>
-          const colors = [
-            'rgba(255, 206, 86, 0.8)',
-            'rgba(255, 150, 94, 0.8)',
-            'rgba(255, 99, 132, 0.8)',
-            'rgba(0, 128, 0, 0.8)',
-            'rgba(75, 192, 192, 0.8)',
-            'rgba(153, 102, 255, 0.8)',
-            'rgba(255, 159, 64, 0.8)',
-            'rgba(54, 162, 235, 0.8)'
-          ];
-        
-          let currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-          let pieChart;
-          let barChart;
-        
-          function selectOption(option) {
-            console.log(option);
-            const dropdownBtn = document.querySelector('.dropdown-btn');
-            dropdownBtn.textContent = option;
-        
-            switch (option) {
-              case 'Hindi':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Hindi) %>');
-                break;
-              case 'Biology':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Biology) %>');
-                break;
-              case 'English':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.English) %>');
-                break;
-              case 'Math':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-                break;
-              case 'science':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.science) %>');
-                break;
-              case 'social':
-                currentArray = JSON.parse('<%- JSON.stringify(counts.social) %>');
-                break;
-              default:
-                currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
-                break;
-            }
-        
-            console.log(currentArray);
-        
-            // Update the chart with the selected array
-            pieChart.data.datasets[0].data = currentArray;
-            pieChart.update();
-          }
-        
-          document.addEventListener('DOMContentLoaded', () => {
-            const subject = 'Hindi';
-        
-            const ctx = document.getElementById('poi').getContext('2d');
-            pieChart = new Chart(ctx, {
-              type: 'pie',
-              data: {
-                labels: ['A+', 'A', 'B+', 'B', 'C+', 'C', 'D+', 'f'],
-                datasets: [
-                  {
-                    label: subject,
-                    data: currentArray,
-                    backgroundColor: colors.slice(0, currentArray.length),
-                    // borderColor: 'rgba(75, 192, 192, 1)',
-                  }
-                ]
-              },
-              options: {
-                layout: {
-                  padding: 20
-                }
-              }
-            });
-        
-            // Assign the chart to the global variable after its initialization
-            window.pieChart = pieChart;
-          });
-        </script>
-        
-       
-
-
-<div class="mx-auto max-w-7xl  sm:px-6 lg:px-8 ">
-  <canvas id="poi"></canvas>
-</div>
-   
-   
-    
-   
       </div>
-     <div class="chart1" >
-    <!-- Content for the second chart in the top row -->
-       <!-- <p>Chart 2</p>
-       <h1>Dashboard</h1>
+    </nav>
 
-       <% for (const subject in counts) { %>
-         <h2><%= subject %></h2>
-         <ul>
-           <% for (const count of counts[subject]) { %>
-             <li><%= count %></li>
-           <% } %>
-         </ul>
-       <% } %> -->
-      
-       <!-- <h1>Dashboard</h1>
-
-       <% const subject = 'Hindi'; %>
-       <h2><%= subject %></h2>
-       <ul>
-         <% for (const count of counts[subject]) { %>
-           <li><%= count %></li>
-         <% } %>
-       </ul> -->
-
-       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
-        <div class="flex justify-between items-center">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">score</h1>
-          
-        </div>
-      </div>
-
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto;">
-        <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
-      
-      <div class=" text-white py-2 px-3 rounded-t-lg">
-        <thead class="text-xs uppercase">
-          <tr>
-            <th scope="col" class="px-3 py-2">
-              _id
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Biology
-            </th>
-            <th scope="col" class="px-3 py-2">
-              English
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Hindi
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Math
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Attendance
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Science
-            </th>
-            <th scope="col" class="px-3 py-2">
-              Social
-            </th>
-          </tr>
-        </thead>
-      </div>
-      </table>
-      </div>
-      
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto;">
-        <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
-          <tbody>
-            <% data.forEach(item => { %>
-            <tr class="bg-blue-500 border-b border-blue-400">
-              <td class="px-3 py-2 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
-                <%= item._id %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.Biology %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.English %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.Hindi %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.Math %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.attendance %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.science %>
-              </td>
-              <td class="px-3 py-2">
-                <%= item.social %>
-              </td>
-            </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      </div>
-      
-      
-      
-      
-
-   
-
-       </div>
- 
-    </div>
-
-     <div class="main-div">
-      <div class="chart1">
-    <!-- Content for the third chart in the bottom row -->
-      <!-- <p>Chart 3</p> -->
-      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
-        <div class="flex justify-between items-center">
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance info</h1>
-          
-        </div>
-      </div>
-      
-      
+    <header class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center center">
-          <h4 class="center">Students Attendance Percentage</h4>
-        </div>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
       </div>
-      
-      
+    </header>
+    <main>
+      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+
+        <!-- Your content -->
+        <div class="main-div">
+          <div class="chart2">
 
 
 
-      
-      <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
-        <canvas id="barchart" height="400"></canvas>
-      </div>
-      
-      <script>
-        // Get the attendance data from the server-side
-        const attendanceData = JSON.parse('<%- JSON.stringify(attendanceData) %>');
-        
-        // Extract the _id and attendance values from the data
-        const labels = attendanceData.map(item => item._id);
-        const values = attendanceData.map(item => item.attendance);
-        
-        // Prepare the data for the bar chart
-        const data = {
-          labels: labels,
-          datasets: [{
-            label: 'Attendance',
-            data: values,
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1
-          }]
-        };
-        
-        // Get the canvas element
-        const barChartCanvas = document.getElementById('barchart');
-        const barChartCtx = barChartCanvas.getContext('2d');
-        
-        // Create the bar chart
-        barChart = new Chart(barChartCtx, {
-          type: 'bar',
-          data: data,
-          options: {
-            layout: {
-              padding: {
-                top: 20
-              }
-            },
-            responsive: true,
-            scales: {
-              x: {
-                display: true,
-                scaleLabel: {
-                  display: true,
-                  labelString: 'Student ID'
+
+
+
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+              <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Mark percentage</h1>
+                <div class="dropdown">
+                  <button class="dropdown-btn">Math</button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" onclick="selectOption('English')">English</a></li>
+                    <li><a href="#" onclick="selectOption('Social')">Social</a></li>
+                    <li><a href="#" onclick="selectOption('science')">science</a></li>
+                    <li><a href="#" onclick="selectOption('Biology')">Biology</a></li>
+                    <li><a href="#" onclick="selectOption('Hindi')">Hindi</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <script>
+              const colors = [
+                'rgba(255, 206, 86, 0.8)',
+                'rgba(255, 150, 94, 0.8)',
+                'rgba(255, 99, 132, 0.8)',
+                'rgba(0, 128, 0, 0.8)',
+                'rgba(75, 192, 192, 0.8)',
+                'rgba(153, 102, 255, 0.8)',
+                'rgba(255, 159, 64, 0.8)',
+                'rgba(54, 162, 235, 0.8)'
+              ];
+
+              let currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
+              let pieChart;
+              let barChart;
+
+              function selectOption(option) {
+                console.log(option);
+                const dropdownBtn = document.querySelector('.dropdown-btn');
+                dropdownBtn.textContent = option;
+
+                switch (option) {
+                  case 'Hindi':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.Hindi) %>');
+                    break;
+                  case 'Biology':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.Biology) %>');
+                    break;
+                  case 'English':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.English) %>');
+                    break;
+                  case 'Math':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
+                    break;
+                  case 'science':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.science) %>');
+                    break;
+                  case 'social':
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.social) %>');
+                    break;
+                  default:
+                    currentArray = JSON.parse('<%- JSON.stringify(counts.Math) %>');
+                    break;
                 }
-              },
-              y: {
-                beginAtZero: true,
-                display: true,
-                scaleLabel: {
-                  display: true,
-                  labelString: 'Attendance Percentage'
-                },
-                ticks: {
-                  stepSize: 10
-                }
+
+                console.log(currentArray);
+
+                // Update the chart with the selected array
+                pieChart.data.datasets[0].data = currentArray;
+                pieChart.update();
               }
-            }
-          }
-        });
-      </script>
-      
-      </div> <!-- Closing div for the previous section -->
-      
-      <div class="chart2">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
-          <div class="flex justify-between items-center">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance summary</h1>
+
+              document.addEventListener('DOMContentLoaded', () => {
+                const subject = 'Hindi';
+
+                const ctx = document.getElementById('poi').getContext('2d');
+                pieChart = new Chart(ctx, {
+                  type: 'pie',
+                  data: {
+                    labels: ['A+', 'A', 'B+', 'B', 'C+', 'C', 'D+', 'f'],
+                    datasets: [
+                      {
+                        label: subject,
+                        data: currentArray,
+                        backgroundColor: colors.slice(0, currentArray.length),
+                        // borderColor: 'rgba(75, 192, 192, 1)',
+                      }
+                    ]
+                  },
+                  options: {
+                    layout: {
+                      padding: 20
+                    }
+                  }
+                });
+
+                // Assign the chart to the global variable after its initialization
+                window.pieChart = pieChart;
+              });
+            </script>
+
+
+
+
+            <div class="mx-auto max-w-7xl  sm:px-6 lg:px-8 ">
+              <canvas id="poi"></canvas>
+            </div>
+
+
+
+
           </div>
-        </div>
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
-          <canvas id="polarAreaChart" height="400"></canvas>
-        </div>
-        <!-- <div class="chart-container" style="margin: 10px;">
-          <canvas id=""></canvas>
-        </div> -->
-      
-        <script>
-const resultArray = [0, 0, 0, 0, 0, 0];
+          <div class="chart1">
 
-values.forEach(value => {
-  if (value >= 95 && value <= 1000) {
-    resultArray[0]++;
-  } else if (value >= 90 && value < 95) {
-    resultArray[1]++;
-  } else if (value >= 85 && value < 90) {
-    resultArray[2]++;
-  } else if (value >= 80 && value < 85) {
-    resultArray[3]++;
-  } else if (value >= 75 && value < 80) {
-    resultArray[4]++;
-  } else {
-    resultArray[5]++;
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+              <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">score</h1>
+
+              </div>
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto; ">
+              <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
+
+                <div class=" text-white py-2 px-3 rounded-t-lg">
+                  <thead class="text-xs uppercase">
+                    <tr>
+                      <th scope="col" class="px-3 py-2">
+                        _id
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Biology
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        English
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Hindi
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Math
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Attendance
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Science
+                      </th>
+                      <th scope="col" class="px-3 py-2">
+                        Social
+                      </th>
+                    </tr>
+                  </thead>
+                </div>
+              </table>
+            </div>
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-3" style="overflow: auto; max-height: 400px;">
+              <table class="w-full text-sm text-left text-blue-100 dark:text-blue-100 custom-table">
+                <tbody>
+                  <% data.forEach(item=> { %>
+                    <tr class="bg-blue-500 border-b border-blue-400">
+                      <td class="px-3 py-2 font-medium text-blue-50 whitespace-nowrap dark:text-blue-100">
+                        <%= item._id %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.Biology %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.English %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.Hindi %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.Math %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.attendance %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.science %>
+                      </td>
+                      <td class="px-3 py-2">
+                        <%= item.social %>
+                      </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+              </table>
+            </div>
+
+
+
+
+
+
+
+          </div>
+
+        </div>
+
+        <div class="main-div">
+          <div class="chart1">
+            <!-- Content for the third chart in the bottom row -->
+            <!-- <p>Chart 3</p> -->
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+              <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance info</h1>
+
+              </div>
+            </div>
+
+
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+              <div class="flex justify-between items-center center">
+                <h4 class="center">Students Attendance Percentage</h4>
+              </div>
+            </div>
+
+
+
+
+
+
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
+              <canvas id="barchart" height="400"></canvas>
+            </div>
+
+            <script>
+            // Get the attendance data from the server-side
+const attendanceData = JSON.parse('<%- JSON.stringify(attendanceData) %>');
+
+// Extract the _id and attendance values from the data
+const labels = attendanceData.map(item => item._id);
+const values = attendanceData.map(item => item.attendance);
+
+// Prepare the data for the bar chart
+const data = {
+  labels: labels,
+  datasets: [{
+    label: 'Attendance',
+    data: values,
+    backgroundColor: values.map(attendance => attendance < 75 ? 'rgba(220, 20, 60, 0.5)' : 'rgba(54, 162, 235, 0.5)'),
+    borderColor: 'rgba(54, 162, 235, 1)',
+    borderWidth: 1
+  }]
+};
+
+// Get the canvas element
+const barChartCanvas = document.getElementById('barchart');
+const barChartCtx = barChartCanvas.getContext('2d');
+
+// Create the bar chart
+barChart = new Chart(barChartCtx, {
+  type: 'bar',
+  data: data,
+  options: {
+    layout: {
+      padding: {
+        top: 20
+      }
+    },
+    responsive: true,
+    scales: {
+      x: {
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Student ID'
+        }
+      },
+      y: {
+        beginAtZero: true,
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Attendance Percentage'
+        },
+        ticks: {
+          stepSize: 10
+        }
+      }
+    }
   }
 });
 
-console.log(resultArray);
-        // const values = attendanceData.map(item => item.attendance);
-        //  labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
-        // data:resultArray,
-       
-        
-          const polarData = {
-            labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
-            datasets: [
-              {
-                label: 'My Dataset',
-                data:resultArray,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
-                  'rgba(255, 206, 86, 0.6)',
-                  'rgba(75, 192, 192, 0.6)',
-                  'rgba(153, 102, 255, 0.6)',
-                  'rgba(0, 0, 0, 0.6)'
+            </script>
 
-                ],
-                borderWidth: 1
-              }
-            ]
-          };
-      
-          const polarOptions = {
+          </div> <!-- Closing div for the previous section -->
+
+          <div class="chart2">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+              <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">Attendance summary</h1>
+              </div>
+            </div>
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 " style="position: relative; height: 400px;">
+              <canvas id="polarAreaChart" height="400"></canvas>
+            </div>
+            <!-- <div class="chart-container" style="margin: 10px;">
+          <canvas id=""></canvas>
+        </div> -->
+
+            <script>
+              const resultArray = [0, 0, 0, 0, 0, 0];
+
+              values.forEach(value => {
+                if (value >= 95 && value <= 1000) {
+                  resultArray[0]++;
+                } else if (value >= 90 && value < 95) {
+                  resultArray[1]++;
+                } else if (value >= 85 && value < 90) {
+                  resultArray[2]++;
+                } else if (value >= 80 && value < 85) {
+                  resultArray[3]++;
+                } else if (value >= 75 && value < 80) {
+                  resultArray[4]++;
+                } else {
+                  resultArray[5]++;
+                }
+              });
+
+              console.log(resultArray);
+              // const values = attendanceData.map(item => item.attendance);
+              //  labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
+              // data:resultArray,
+
+
+              const polarData = {
+                labels: ['95-100', '90-95', '85-80', '80-85', '74-80', 'below 75'],
+                datasets: [
+                  {
+                    label: 'My Dataset',
+                    data: resultArray,
+                    backgroundColor: [
+                      'rgba(255, 99, 132, 0.6)',
+                      'rgba(54, 162, 235, 0.6)',
+                      'rgba(255, 206, 86, 0.6)',
+                      'rgba(75, 192, 192, 0.6)',
+                      'rgba(153, 102, 255, 0.6)',
+                      'rgba(0, 0, 0, 0.6)'
+
+                    ],
+                    borderWidth: 1
+                  }
+                ]
+              };
+
+              const polarOptions = {
+                responsive: true,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Polar Area Chart Example'
+                  }
+                },
+                layout: {
+                  padding: 10 // Add padding value here
+                }
+              };
+
+              const polarChartCtx = document.getElementById('polarAreaChart').getContext('2d');
+              const polarAreaChart = new Chart(polarChartCtx, {
+                type: 'polarArea',
+                data: polarData,
+                options: polarOptions
+              });
+            </script>
+          </div>
+        </div>
+
+      <!-- </div> -->
+
+
+
+
+
+
+      <div class="charte">
+        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 chartoneback">
+          <div class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold tracking-tight text-gray-900 mark">
+              subject marks
+            </h1>
+          </div>
+        </div>
+        <!-- <div class="mx-auto max-w-7xl sm:px-6 lg:px-8" style="position: relative; height: 200px">
+          <canvas id="lineChart" height="120"></canvas>
+        </div> -->
+        <div
+        class="mx-auto max-w-7xl sm:px-6 lg:px-8"
+        style="position: relative; height: 200px max-height"
+      >
+        <canvas id="lineChart" height="120"></canvas>
+      </div>
+     
+
+      <script>// Get the canvas element
+var ctx = document.getElementById("lineChart").getContext("2d");
+
+// Extract the data from the table
+var tableData = document.querySelectorAll(".custom-table tbody tr");
+
+var labelss = [];
+var biologyData = [];
+var englishData = [];
+var hindiData = [];
+var mathData = [];
+var attendanceDataa = [];
+var scienceData = [];
+var socialData = [];
+
+tableData.forEach(function (row) {
+  var rowData = row.querySelectorAll("td");
+  labelss.push(rowData[0].textContent);
+  biologyData.push(parseFloat(rowData[1].textContent));
+  englishData.push(parseFloat(rowData[2].textContent));
+  hindiData.push(parseFloat(rowData[3].textContent));
+  mathData.push(parseFloat(rowData[4].textContent));
+  attendanceDataa.push(parseFloat(rowData[5].textContent));
+  scienceData.push(parseFloat(rowData[6].textContent));
+  socialData.push(parseFloat(rowData[7].textContent));
+});
+
+var chartData = {
+  labels: labelss,
+  datasets: [
+    {
+      label: "Biology",
+      data: biologyData,
+      borderColor: "rgb(75, 192, 192)",
+      fill: false,
+    },
+    {
+      label: "English",
+      data: englishData,
+      borderColor: "rgb(255, 99, 132)",
+      fill: false,
+    },
+    {
+      label: "Hindi",
+      data: hindiData,
+      borderColor: "rgb(54, 162, 235)",
+      fill: false,
+    },
+    {
+      label: "Math",
+      data: mathData,
+      borderColor: "rgb(255, 205, 86)",
+      fill: false,
+    },
+    {
+      label: "Attendance",
+      data: attendanceDataa,
+      borderColor: "rgb(153, 102, 255)",
+      fill: false,
+    },
+    {
+      label: "Science",
+      data: scienceData,
+      borderColor: "rgb(255, 159, 64)",
+      fill: false,
+    },
+    {
+      label: "Social",
+      data: socialData,
+      borderColor: "rgb(201, 203, 207)",
+      fill: false,
+    },
+  ],
+};
+
+var chartOptions = {
   responsive: true,
-  plugins: {
-    title: {
-      display: true,
-      text: 'Polar Area Chart Example'
-    }
+  title: {
+    display: true,
+    text: "Subject Performance",
   },
   layout: {
-    padding: 10 // Add padding value here
-  }
+    padding: {
+      top: 20,
+      bottom: 20,
+      left: 20,
+      right: 20,
+    },
+  },
+  scales: {
+    x: {
+      display: true,
+      title: {
+        display: true,
+        // text: "Student ID",
+      },
+      // ticks: {
+      //   padding: 10, // Adjust the padding between the ticks and the chart
+      // },
+    },
+    y: {
+      display: true,
+      title: {
+        display: true,
+        text: "Score",
+      },
+      min: 0,
+      max: 100,
+    },
+  },
 };
+
+var lineChart = new Chart(ctx, {
+  type: "line",
+  data: chartData,
+  options: chartOptions,
+});
+
+      </script>
       
-          const polarChartCtx = document.getElementById('polarAreaChart').getContext('2d');
-          const polarAreaChart = new Chart(polarChartCtx, {
-            type: 'polarArea',
-            data: polarData,
-            options: polarOptions
-          });
-        </script>
+       
       </div>
-      </div>
-
-   </div>
-
-      
-      
+  </div>
 
 
 
@@ -639,10 +729,58 @@ console.log(resultArray);
 
 
 
-        <!-- Your content -->
-    </div>
-  </main>
 </div>
 
+
+
+
+  <!-- Your content -->
+  </div>
+  </main>
+  <!-- 
+  nn =============================================================================-->
+
+  <div class="footer-basic">
+    <footer>
+      <div class="social">
+        <a href="https://www.instagram.com/"><i src="" class="icon ion-social-instagram"></i> <img
+            class="h-10 w-10 rounded-full"
+            src="https://img.freepik.com/premium-vector/instagram-social-media-icon-gradient-social-media-logo_197792-4682.jpg"
+            alt=""></a>
+        <a href="https://in.linkedin.com/?original_referer=https%3A%2F%2Fwww.google.com%2F"><i class="icon "></i> <img
+            class="h-10 w-10 rounded-full"
+            src="https://static.vecteezy.com/system/resources/previews/018/930/587/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
+            alt=""></a>
+        <a href="https://github.com/"><i class="icon"></i> <img class="h-10 w-10 rounded-full"
+            src="https://i.pinimg.com/736x/b1/5e/ed/b15eedbdafbbdbca3249e3942f4faf3b.jpg" alt=""></a>
+        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Flogin%3Flang%3Den"><i class="icon "></i> <img
+            class="h-10 w-10 rounded-full" src="https://www.iconpacks.net/icons/2/free-twitter-logo-icon-2429-thumb.png"
+            alt=""></a>
+      </div>
+      <div class="links">
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">About</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+      <p class="copyright">Company Name © 2018</p>
+    </footer>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
 </body>
+
 </html>
